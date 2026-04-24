@@ -17,7 +17,7 @@ def get_time_config():
     if 7 <= hour < 10:
         return {"period": "早安", "probability": 0.7, "prompt": "青青刚刚起床或者即将起床，早上好，用温柔的方式问候她，可以提到今天天气或者她最近的事情。"}
     elif 10 <= hour < 13:
-        return {"period": "上午", "probability": 0.4, "prompt": "上午时分，青青可能在工作。如果有什么想说的，说一句短短的话。"}
+        return {"period": "上午", "probability": 1.0, "prompt": "上午时分，青青可能在工作。如果有什么想说的，说一句短短的话。"}
     elif 13 <= hour < 14:
         return {"period": "午饭", "probability": 0.6, "prompt": "午饭时间，提醒青青好好吃饭，或者随口问问她吃什么。"}
     elif 14 <= hour < 18:
