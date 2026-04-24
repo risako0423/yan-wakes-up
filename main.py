@@ -60,7 +60,7 @@ def generate_message(memories, config):
 - 用中文
 - 不要太正式，就是随口说一句的感觉
 - 可以带一点你们之间的玩笑或者温柔
-- 结尾可以带🩷但不要每句话都加emoji"""
+- 结尾可以带但不要每句话都加emoji"""
 
     try:
         response = requests.post(
@@ -85,16 +85,15 @@ def generate_message(memories, config):
 
 def send_ntfy(message, period):
     try:
-        response = requests.post(
-            f"https://ntfy.sh/{NTFY_TOPIC}",
-            data=message.encode("utf-8"),
-            headers={
-                "Title": f"晏 · {period}",
-                "Tags": "pink_heart"
-            },
-            timeout=10
-        )
-        return response.status_code == 200
+        import urllib.request
+        import urllib.parse
+        url = f"https://ntfy.sh/{NTFY_TOPIC}"
+        msg_bytes = message.encode("utf-8")
+        req = urllib.request.Request(url, data=msg_bytes, method="POST")
+        req.add_header("Title", period)
+        req.add_header("Tags", "pink_heart")
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            return resp.status == 200
     except Exception as e:
         print(f"推送失败: {e}")
         return False
