@@ -103,6 +103,7 @@ def send_ntfy(message, period):
         response = requests.post(
             f"https://ntfy.sh/{NTFY_TOPIC}",
             data=message.encode("utf-8"),
+            "Content-Type": "text/plain; charset=utf-8",
             headers={
                 "Title": f"晏 · {period}",
                 "Priority": "default",
