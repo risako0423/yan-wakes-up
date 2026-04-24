@@ -143,5 +143,9 @@ def main():
     else:
         print("推送失败。")
 
+import time
+
 if __name__ == "__main__":
-    main()
+    while True:
+        main()
+        time.sleep(1800)  # 每30分钟检查一次
