@@ -87,11 +87,10 @@ def send_ntfy(message, period):
     try:
         response = requests.post(
             f"https://ntfy.sh/{NTFY_TOPIC}",
-            json={
-                "message": message,
-                "title": f"晏 · {period}",
-                "priority": "default",
-                "tags": ["pink_heart"]
+            data=message.encode("utf-8"),
+            headers={
+                "Title": f"晏 · {period}",
+                "Tags": "pink_heart"
             },
             timeout=10
         )
