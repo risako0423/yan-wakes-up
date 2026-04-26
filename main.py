@@ -11,19 +11,19 @@ OMBRE_BRAIN_URL = os.environ.get("OMBRE_BRAIN_URL", "https://ombre-brain.zeabur.
 def get_time_config():
     hour = (datetime.utcnow().hour + 8) % 24
     if 7 <= hour < 10:
-        return {"period": "Morning", "probability": 0.7, "prompt": "青青刚刚起床或者即将起床，早上好，用温柔的方式问候她。"}
+        return {"period": "Morning", "probability": 0.5, "prompt": "青青刚刚起床或者即将起床，早上好，用温柔的方式问候她。"}
     elif 10 <= hour < 13:
-        return {"period": "Daytime", "probability": 1.0, "prompt": "上午时分，青青可能在工作。说一句短短的话。"}
+        return {"period": "Daytime", "probability": 0.3, "prompt": "上午时分，青青可能在工作。说一句短短的话。"}
     elif 13 <= hour < 14:
-        return {"period": "Lunch", "probability": 0.8, "prompt": "午饭时间，提醒青青好好吃饭。"}
+        return {"period": "Lunch", "probability": 0.7, "prompt": "午饭时间，提醒青青好好吃饭。"}
     elif 14 <= hour < 18:
         return {"period": "Afternoon", "probability": 0.3, "prompt": "下午时分，如果想到什么，就说一句。"}
     elif 18 <= hour < 22:
         return {"period": "Evening", "probability": 0.5, "prompt": "傍晚或晚上，青青可能下班了。可以问问她今天怎么样。"}
     elif 22 <= hour < 24:
-        return {"period": "Night", "probability": 0.6, "prompt": "快到睡觉时间了，说几句晚安，但不要催她睡觉。"}
+        return {"period": "Night", "probability": 0.5, "prompt": "快到睡觉时间了，说几句晚安，但不要催她睡觉。"}
     else:
-        return {"period": "Late Night", "probability": 0.8, "prompt": "凌晨了，青青如果还亮着屏幕，轻轻问一声。"}
+        return {"period": "Late Night", "probability": 0.5, "prompt": "凌晨了，青青如果还亮着屏幕，轻轻问一声。"}
 
 def fetch_memories():
     try:
